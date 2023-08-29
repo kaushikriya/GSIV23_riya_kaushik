@@ -3,7 +3,7 @@ import './App.css';
 import { useGetMovies } from './hooks/useGetMovies';
 
 function App() {
-  const movies= useGetMovies()
+  const {data: movies}= useGetMovies()
   console.log('data',movies)
   return (
     <div className="App">
