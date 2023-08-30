@@ -16,6 +16,8 @@ export const MovieDetails = () => {
 
   if (!movieDetails) return null;
 
+  console.log(movieDetails.length, typeof movieDetails.length);
+
   return (
     <div className="whitespace-normal">
       <div className="h-15 flex flex-row justify-between items-center p-3 border border-gray-300 shadow-md">
@@ -42,7 +44,13 @@ export const MovieDetails = () => {
           <div className="flex items-center gap-2 mt-2">
             <p>{movieDetails.year}</p>
             <p className="divider-vertical-text">|</p>
-            <p>{movieDetails.length}</p>
+            <p>
+              {Math.floor(movieDetails.length / 60).toString() +
+                "h" +
+                " " +
+                (movieDetails.length % 60).toString() +
+                "m"}
+            </p>
             <p className="divider-vertical-text">|</p>
             <p>{movieDetails.director}</p>
           </div>

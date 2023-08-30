@@ -31,13 +31,13 @@ export const useMovieDetails = (movieId: number | undefined) => {
     },
     select: (response: {
       movieDetails: {
-        id: any;
-        title: any;
-        vote_average: any;
-        poster_path: any;
-        overview: any;
-        release_date: string | number | Date;
-        runtime: any;
+        id: number;
+        title: string;
+        vote_average: number;
+        poster_path: string;
+        overview: string;
+        release_date: number;
+        runtime: number;
       };
       credits: {
         cast: { name: string }[];
@@ -56,7 +56,7 @@ export const useMovieDetails = (movieId: number | undefined) => {
         media: movieDetails.poster_path,
         description: movieDetails.overview,
         year: new Date(movieDetails.release_date).getFullYear(),
-        length: `${movieDetails.runtime} min`,
+        length: movieDetails.runtime,
         director: director ? director.name : "N/A", // Set director or N/A if not found
         cast: castList,
       };
