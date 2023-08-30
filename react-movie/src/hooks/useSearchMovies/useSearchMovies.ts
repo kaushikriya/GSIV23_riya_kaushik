@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { Movie } from "../interfaces/movie";
+import { Movie } from "../../interfaces/movie";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3/search/movie";
@@ -42,7 +42,7 @@ export const useSearchMovies = (searchKeyword: string | undefined) => {
             rating: movie.vote_average,
             media: movie.poster_path,
             description: movie.overview,
-          } as Partial<Movie>)
+          } as Movie)
       );
       return movies;
     },

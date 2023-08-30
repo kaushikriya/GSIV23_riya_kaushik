@@ -4,8 +4,8 @@ export interface Movie {
   rating: number;
   media: string;
   description: string;
-  year: number;
-  length: string;
-  director: string;
-  cast: string[];
+  year?: number;
+  length?: number;
+  director?: string;
+  cast?: string[];
 }

@@ -42,7 +42,7 @@ export const useGetMovies = (page: number) => {
             rating: movie.vote_average,
             media: movie.poster_path,
             description: movie.overview,
-          } as Partial<Movie>)
+          } as Movie)
       );
 
       return movies;

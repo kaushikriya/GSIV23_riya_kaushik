@@ -16,6 +16,11 @@ export const MovieDetails = () => {
 
   if (!movieDetails) return null;
 
+  const movieCastLength =
+    movieDetails.cast && movieDetails.cast.length > 0
+      ? movieDetails.cast.length
+      : 0;
+
   return (
     <div className="whitespace-normal w-full items-center flex-wrap">
       <div className="w-full h-15 flex flex-row justify-between items-center p-3 border border-gray-300 shadow-md">
@@ -43,10 +48,17 @@ export const MovieDetails = () => {
             <p>{movieDetails.year}</p>
             <p className="divider-vertical-text">|</p>
             <p>
-              {Math.floor(movieDetails.length / 60).toString() +
+              {Math.floor(
+                movieDetails.length && movieDetails.length > 0
+                  ? movieDetails?.length / 60
+                  : 0
+              ).toString() +
                 "h" +
                 " " +
-                (movieDetails.length % 60).toString() +
+                (movieDetails.length && movieDetails.length > 0
+                  ? movieDetails?.length % 60
+                  : 0
+                ).toString() +
                 "m"}
             </p>
             <p className="divider-vertical-text">|</p>
@@ -55,12 +67,13 @@ export const MovieDetails = () => {
           <div className="w-full mt-2 text-sm flex-wrap">
             <div className="flex flex-row flex-wrap">
               <p className="text-sm font-semibold mr-1">Cast:</p>
-              {movieDetails.cast.map((actor: string, index: number) => (
-                <React.Fragment key={index}>
-                  <p className="text-sm whitespace-nowrap">{actor}</p>
-                  {index !== movieDetails.cast.length - 1 && <p>,</p>}
-                </React.Fragment>
-              ))}
+              {movieDetails.cast &&
+                movieDetails.cast.map((actor: string, index: number) => (
+                  <React.Fragment key={index}>
+                    <p className="text-sm whitespace-nowrap">{actor}</p>
+                    {index !== movieCastLength - 1 && <p>,</p>}
+                  </React.Fragment>
+                ))}
             </div>
             <div className="flex flex-row gap-1 flex-wrap">
               <p className="text-sm font-semibold whitespace-nowrap">
