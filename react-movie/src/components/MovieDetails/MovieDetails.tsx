@@ -16,25 +16,23 @@ export const MovieDetails = () => {
 
   if (!movieDetails) return null;
 
-  console.log(movieDetails.length, typeof movieDetails.length);
-
   return (
-    <div className="whitespace-normal">
-      <div className="h-15 flex flex-row justify-between items-center p-3 border border-gray-300 shadow-md">
+    <div className="whitespace-normal w-full items-center flex-wrap">
+      <div className="w-full h-15 flex flex-row justify-between items-center p-3 border border-gray-300 shadow-md">
         <p className="text-lg font-semibold hover:cursor-pointer">
           Movie Details
         </p>
         <HomeSharpIcon onClick={() => router.push("/")} className="h-8 w-8" />
       </div>
-      <div className="flex flex-row m-3">
-        <div className="w-[200px] h-[300px] shadow-md">
+      <div className="m-3 grid grid-cols-1 md:grid-cols-6">
+        <div className="w-[100%] col-span-1">
           <img
             src={getMediaUrl(movieDetails.media)}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full"
           />
         </div>
-        <div className="w-full mx-4">
+        <div className="w-full md:mx-4 col-span-5">
           <div className="flex gap-2 items-center">
             <p className="text-xl font-semibold">{movieDetails.title}</p>
             <p className="text-md text-slate-400">
@@ -64,8 +62,10 @@ export const MovieDetails = () => {
                 </React.Fragment>
               ))}
             </div>
-            <div className="flex flex-row gap-1">
-              <p className="text-sm font-semibold">Description:</p>
+            <div className="flex flex-row gap-1 flex-wrap">
+              <p className="text-sm font-semibold whitespace-nowrap">
+                Description:
+              </p>
               <p>{movieDetails.description}</p>
             </div>
           </div>
