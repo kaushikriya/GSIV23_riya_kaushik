@@ -6,9 +6,9 @@ function App() {
   const {data: movies}= useGetMovies()
   console.log('data',movies)
   return (
-    <div className="App">
-      Hello
-    </div>
+    <h1 className="text-3xl font-bold underline">
+    Hello world!
+  </h1>
   );
 }
 
