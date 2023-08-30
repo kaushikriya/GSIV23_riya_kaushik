@@ -31,7 +31,7 @@ export const MovieLanding = () => {
         hasMore={true}
         loader={<h4>Loading...</h4>}
       >
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid md:grid-cols-3 gap-2 grid-cols-1 lg:grid-cols-5">
           {finalMovies && finalMovies.length > 0
             ? finalMovies.map((movie: Partial<Movie>, index: number) => (
                 <div className="flex justify-center" key={index}>
