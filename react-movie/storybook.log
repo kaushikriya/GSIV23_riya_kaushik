@@ -1,0 +1,37 @@
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR! 
+npm ERR! While resolving: react-movie@0.1.0
+npm ERR! Found: webpack@4.19.1
+npm ERR! node_modules/webpack
+npm ERR!   peer webpack@">=2" from babel-loader@8.0.4
+npm ERR!   node_modules/babel-loader
+npm ERR!     babel-loader@"8.0.4" from react-scripts@2.1.3
+npm ERR!     node_modules/react-scripts
+npm ERR!       react-scripts@"^2.1.3" from the root project
+npm ERR!   peer webpack@">=2" from babel-loader@8.0.5
+npm ERR!   node_modules/babel-preset-react-app/node_modules/babel-loader
+npm ERR!     babel-loader@"8.0.5" from babel-preset-react-app@7.0.2
+npm ERR!     node_modules/babel-preset-react-app
+npm ERR!       babel-preset-react-app@"^7.0.0" from react-scripts@2.1.3
+npm ERR!       node_modules/react-scripts
+npm ERR!         react-scripts@"^2.1.3" from the root project
+npm ERR!   16 more (css-loader, eslint-loader, file-loader, ...)
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! dev @storybook/nextjs@"^7.4.0" from the root project
+npm ERR! 
+npm ERR! Conflicting peer dependency: webpack@5.88.2
+npm ERR! node_modules/webpack
+npm ERR!   peerOptional webpack@"^5.0.0" from @storybook/nextjs@7.4.0
+npm ERR!   node_modules/@storybook/nextjs
+npm ERR!     dev @storybook/nextjs@"^7.4.0" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! See /Users/haibara/.npm/eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/haibara/.npm/_logs/2023-08-30T13_28_57_691Z-debug-0.log

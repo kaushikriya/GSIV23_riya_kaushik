@@ -1,8 +1,8 @@
-// pages/index.tsx
-import React from 'react';
+import { MovieLanding } from "../components/MovieLanding/MovieLanding";
+import React from "react";
 
-function Home() {
-  return <div>Welcome to the Home Page</div>;
-}
+const Landing = () => {
+  return <MovieLanding />;
+};
 
-export default Home;
+export default Landing;
