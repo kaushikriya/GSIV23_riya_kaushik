@@ -1,8 +1,8 @@
-import { MovieLanding } from "../components/MovieLanding/MovieLanding";
 import React from "react";
+import { MovieDetails } from "../components/MovieDetails/MovieDetails";
 
 const Landing = () => {
-  return <div>Details</div>;
+  return <MovieDetails />;
 };
 
 export default Landing;

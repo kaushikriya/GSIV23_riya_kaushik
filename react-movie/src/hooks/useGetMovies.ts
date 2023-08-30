@@ -5,13 +5,14 @@ import { Movie } from "../interfaces/movie";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
-export const useGetMovies = () => {
+export const useGetMovies = (page: number) => {
   return useQuery({
-    queryKey: ["movies"],
+    queryKey: ["movies", page],
     queryFn: async () => {
       const response = await axios.get(`${BASE_URL}/movie/popular`, {
         params: {
           api_key: API_KEY,
+          page: page,
         },
       });
       return response;
@@ -43,6 +44,7 @@ export const useGetMovies = () => {
             description: movie.overview,
           } as Partial<Movie>)
       );
+
       return movies;
     },
   });

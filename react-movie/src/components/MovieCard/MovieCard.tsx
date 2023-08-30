@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Movie } from "../../interfaces/movie";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setSelectedMovie } from "../../store/movieStore/actions";
+import { getMediaUrl } from "../../utils/media";
 
 export const MovieCard = ({ movie }: { movie: Partial<Movie> }) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
 
-  const getMediaUrl = (media: string | undefined) => {
-    const baseUrl = "https://image.tmdb.org/t/p/w500";
-    return `${baseUrl}${media}`;
+  const handleClick = () => {
+    dispatch(setSelectedMovie(movie));
+    router.push(`/details`);
   };
 
   return (
@@ -18,7 +22,7 @@ export const MovieCard = ({ movie }: { movie: Partial<Movie> }) => {
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => router.push(`/details`)}
+      onClick={handleClick}
     >
       <img className="w-full h-[200px]" src={getMediaUrl(movie.media)} alt="" />
       <div className="m-1 flex justify-between">

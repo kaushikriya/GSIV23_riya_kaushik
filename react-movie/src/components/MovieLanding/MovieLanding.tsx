@@ -6,7 +6,8 @@ import { MovieCard } from "../MovieCard/MovieCard";
 import SearchBar from "../SearchBar/SearchBar";
 
 export const MovieLanding = () => {
-  const { data: popularMovies } = useGetMovies();
+  const [page, setPage] = useState<number>(1);
+  const { data: popularMovies } = useGetMovies(page);
   const [searchInput, setSearchInput] = useState<string | undefined>();
 
   const { data: searchMovies } = useSearchMovies(searchInput);
