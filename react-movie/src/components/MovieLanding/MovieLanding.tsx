@@ -4,10 +4,12 @@ import { useSearchMovies } from "../../hooks/useSearchMovies/useSearchMovies";
 import { Movie } from "../../interfaces/movie";
 import { MovieCard } from "../MovieCard/MovieCard";
 import SearchBar from "../SearchBar/SearchBar";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { usePagination } from "../../hooks/usePagination/usePagination";
 
 export const MovieLanding = () => {
   const [page, setPage] = useState<number>(1);
-  const { data: popularMovies } = useGetMovies(page);
+  const { data: movies } = useGetMovies(page);
   const [searchInput, setSearchInput] = useState<string | undefined>();
 
   const { data: searchMovies } = useSearchMovies(searchInput);
@@ -16,20 +18,29 @@ export const MovieLanding = () => {
     setSearchInput(value);
   };
 
-  const movies = searchInput ? searchMovies : popularMovies;
+  const paginatedMovies = usePagination(movies);
+
+  const finalMovies = searchInput ? searchMovies : paginatedMovies;
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <SearchBar value={searchInput} handleChange={handleSearch} />
-      <div className="grid grid-cols-5 gap-2">
-        {movies && movies.length > 0
-          ? movies.map((movie: Partial<Movie>, index: number) => (
-              <div className="flex justify-center" key={index}>
-                <MovieCard movie={movie} />
-              </div>
-            ))
-          : null}
-      </div>
+      <InfiniteScroll
+        dataLength={finalMovies?.length ?? 0}
+        next={() => setPage(page + 1)}
+        hasMore={true}
+        loader={<h4>Loading...</h4>}
+      >
+        <div className="grid grid-cols-5 gap-2">
+          {finalMovies && finalMovies.length > 0
+            ? finalMovies.map((movie: Partial<Movie>, index: number) => (
+                <div className="flex justify-center" key={index}>
+                  <MovieCard movie={movie} />
+                </div>
+              ))
+            : null}
+        </div>
+      </InfiniteScroll>
     </div>
   );
 };
